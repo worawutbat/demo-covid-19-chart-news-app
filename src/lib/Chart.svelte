@@ -5,38 +5,79 @@
         
         import Chart from "chart.js/auto/auto.js";
         import { onMount } from 'svelte';
+        
+//         {
+// txn_date:string;
+// new_case:string;
+// total_case:string;
+// new_case_excludeabroad:string;
+// total_case_excludeabroad:string;
+// new_death:string;
+// total_death:string;
+// new_recovered:string;
+// total_recovered:string;
+// update_date:string}[]
 
-        onMount(() => {
+        const getXAxes = (res) => {
+            // return mapValues(groupBy(res, 'txn_date'), res.map(dailyData => omit(dailyData, 'txn_date')));
+            return res.map(data => data.txn_date)
+        }
+
+        const getYAxes = (res) => {
+            // return mapValues(groupBy(res, 'new_case'), res.map(dailyData => omit(dailyData, 'txn_date')));
+            return res.map(data => data.new_case)
+        }
+
+        onMount(async () => {
+
+        const res = await fetch(`https://covid19.ddc.moph.go.th/api/Cases/timeline-cases-all`);
+        const json = await res.json()
 
         var ctx = canvas.getContext("2d");
 
-        var myChart = new Chart(ctx, {
-            type: 'bar',
+        const config = {
+            type: 'line',
             data: {
-                labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                labels: getXAxes(json),
                 datasets: [{
-                    label: '# of Votes',
-                    data: [12, 19, 3, 5, 2, 3],
+                    label: '# ผู้ติดเชื้อรายใหม่',
+                    data: getYAxes(json),
                     backgroundColor: [
                         'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(153, 102, 255, 0.2)',
-                        'rgba(255, 159, 64, 0.2)'
                     ],
                     borderColor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)',
-                        'rgba(255, 159, 64, 1)'
+                        'rgba(255, 150, 0, 1)',
+                    ],
+                    borderWidth: 1
+                },
+                {
+                    label: '# ผู้เสียชีวิต',
+                    data: json.map(data => data.new_death),
+                    backgroundColor: [
+                        'rgba(255, 120, 0, 1)',
+                    ],
+                    borderColor: [
+                        'rgba(255, 0, 0, 1)',
+                    ],
+                    borderWidth: 1
+                },
+                {
+                    label: '# รักษาหาย',
+                    data: json.map(data => data.new_recovered),
+                    backgroundColor: [
+                     
+                        'rgba(0, 255, 130, 0.8)',
+                    ],
+                    borderColor: [
+                        'rgba(0, 100, 0, 1)',
                     ],
                     borderWidth: 1
                 }]
-            },
-        })
+            }
+        }
+
+        var myChart = new Chart(ctx, config)
+        return
         })
         
     </script>

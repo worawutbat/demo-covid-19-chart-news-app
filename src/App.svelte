@@ -6,20 +6,14 @@
 
 <main>
   <img src={logo} alt="Svelte Logo" />
-  <h1>Hello Typescript!</h1>
+  <h1>Covid 19 static today!</h1>
 
-  <Counter />
   <Chart />
 
   <p>
-    Visit <a href="https://svelte.dev">svelte.dev</a> to learn how to build Svelte
-    apps.
+    Visit <a href="https://covid19.ddc.moph.go.th/api/Cases/timeline-cases-all">covid19.ddc.moph.go.th</a> for raw data of covid 19 in thailand
   </p>
 
-  <p>
-    Check out <a href="https://github.com/sveltejs/kit#readme">SvelteKit</a> for
-    the officially supported framework, also powered by Vite!
-  </p>
 </main>
 
 <style>
