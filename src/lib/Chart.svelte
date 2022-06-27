@@ -5,7 +5,7 @@
         
         import Chart from "chart.js/auto/auto.js";
         import { onMount } from 'svelte';
-        
+
 //         {
 // txn_date:string;
 // new_case:string;
@@ -40,7 +40,7 @@
             data: {
                 labels: getXAxes(json),
                 datasets: [{
-                    label: '# ผู้ติดเชื้อรายใหม่',
+                    label: 'new case',
                     data: getYAxes(json),
                     backgroundColor: [
                         'rgba(255, 99, 132, 0.2)',
@@ -51,7 +51,7 @@
                     borderWidth: 1
                 },
                 {
-                    label: '# ผู้เสียชีวิต',
+                    label: 'new death',
                     data: json.map(data => data.new_death),
                     backgroundColor: [
                         'rgba(255, 120, 0, 1)',
@@ -62,7 +62,7 @@
                     borderWidth: 1
                 },
                 {
-                    label: '# รักษาหาย',
+                    label: 'new recovered',
                     data: json.map(data => data.new_recovered),
                     backgroundColor: [
                      
@@ -73,6 +73,18 @@
                     ],
                     borderWidth: 1
                 }]
+            },
+            options: {
+                borderRadius: '30',
+                responsive: true,
+                cutout: '95%',
+                spacing: 2,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Daily Covid 19'
+                    }
+                }
             }
         }
 
@@ -82,5 +94,5 @@
         
     </script>
 
-<canvas bind:this={canvas} width="400" height="400"></canvas>
+<canvas bind:this={canvas} width="300" height="120"></canvas>
 

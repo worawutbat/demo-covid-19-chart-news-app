@@ -1,10 +1,8 @@
 <script lang="ts">
-  import logo from './assets/svelte.png'
   import Chart from './lib/Chart.svelte'
 </script>
 
 <main>
-  <img src={logo} alt="Svelte Logo" />
   <h1>Covid 19 static today!</h1>
 
   <Chart />
@@ -27,10 +25,10 @@
     margin: 0 auto;
   }
 
-  img {
+  /* img {
     height: 16rem;
     width: 16rem;
-  }
+  } */
 
   h1 {
     color: #ff3e00;
