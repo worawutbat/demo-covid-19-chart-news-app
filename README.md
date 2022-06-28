@@ -1,4 +1,7 @@
-# [SvelteKit](https://euphonious-bienenstitch-05020d.netlify.app/)
+# [demo covid 19 daily](https://euphonious-bienenstitch-05020d.netlify.app/)
+
+This demo is about covid 19 data by show in daily chart. Why contribute this app, I would like to know covid 19 data in simple visual data. 
+
 
 ## Resource 
 
