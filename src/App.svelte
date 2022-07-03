@@ -8,9 +8,10 @@
   <Chart />
 
   <p>
-    Visit <a href="https://covid19.ddc.moph.go.th/api/Cases/timeline-cases-all">covid19.ddc.moph.go.th</a> for raw data of covid 19 in thailand
+    Visit <a href="https://covid19.ddc.moph.go.th/api/Cases/timeline-cases-all"
+      >covid19.ddc.moph.go.th</a
+    > for raw data of covid 19 in thailand
   </p>
-
 </main>
 
 <style>

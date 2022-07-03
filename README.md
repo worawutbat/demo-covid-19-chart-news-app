@@ -9,3 +9,5 @@ API [https://covid19.ddc.moph.go.th/](https://covid19.ddc.moph.go.th/)
 ## Stack
 
 [VS Code](https://code.visualstudio.com/) + [Svelte](https://marketplace.visualstudio.com/items?itemName=svelte.svelte-vscode).
+
+deploy in : netlify
