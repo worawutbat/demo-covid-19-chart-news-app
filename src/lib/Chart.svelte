@@ -1,5 +1,5 @@
 <script>
-  let canvas
+  let _canvas
 
   import Chart from 'chart.js/auto/auto.js'
   import { onMount } from 'svelte'
@@ -18,7 +18,7 @@
 
   const getXAxes = (res) => {
     // return mapValues(groupBy(res, 'txn_date'), res.map(dailyData => omit(dailyData, 'txn_date')));
-    return res.map((data) => data.txn_date)
+    return res.map((data) => `${data.year} week: ${data.weeknum}`)
   }
 
   const getYAxes = (res) => {
@@ -27,13 +27,14 @@
   }
 
   onMount(async () => {
-    
     const res = await fetch(
       `https://covid19.ddc.moph.go.th/api/Cases/timeline-cases-all`
     )
-    const json = await res.json()
 
-    var ctx = canvas.getContext('2d')
+    const json = await res.json()
+    console.log(json)
+
+    var ctx = _canvas.getContext('2d')
 
     const config = {
       type: 'line',
@@ -77,9 +78,9 @@
       },
     }
 
-    var myChart = new Chart(ctx, config)
+    new Chart(ctx, config)
     return
   })
 </script>
 
-<canvas bind:this={canvas} width="300" height="120" />
+<canvas bind:this={_canvas} width="300" height="120" />
